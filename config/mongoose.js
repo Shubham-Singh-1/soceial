@@ -1,17 +1,15 @@
-//require the library
 const mongoose = require('mongoose');
 
-//connect to the datbase
-mongoose.connect('mongodb://localhost/codeial_developement', {useNewUrlParser: true});
-// acquire the connection to check if it is successful
+mongoose.connect('mongodb://localhost/codeial_development');
+
 const db = mongoose.connection;
 
-// error
-db.on('error', console.error.bind(console, 'Error connecting to mongoDB'));
+db.on('error', console.error.bind(console, "Error connecting to MongoDB"));
 
-// up and running then print the message
-db.once('open', () => {
-    console.log('Connected to database :: mongoDB');
+
+db.once('open', function(){
+    console.log('Connected to Database :: MongoDB');
 });
+
 
 module.exports = db;
