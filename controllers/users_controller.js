@@ -18,3 +18,14 @@ module.exports.singIn = ((req,res) => {
         title:"Codeila | Sign In",
     });
 });
+
+
+//get the sign in data
+module.exports.create = ((req,res) => {
+    //TODO later
+});
+
+//sign in and create session for the user
+module.exports.createSession = ((req,res) => {
+    //TODO later
+});
