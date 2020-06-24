@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 //connect to the datbase
-mongoose.connect('mongodb://localhost:27017/codeial_developement', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/codeial_developement', {useNewUrlParser: true});
 // acquire the connection to check if it is successful
 const db = mongoose.connection;
 
