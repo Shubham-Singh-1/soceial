@@ -8,7 +8,7 @@ const usersController = require('../controllers/users_controller');
 
 console.log('user route created');
 
-router.get('/profile' , usersController.profile);
+router.get('/profile' ,passport.checkAuthentication,usersController.profile);
 router.get('/post' , require('./post'));
 
 router.get('/sign-up', usersController.signUp);
