@@ -26,3 +26,24 @@ passport.use(new LocalStatergy({
     }
 
 ));
+
+
+//serialise the user to decide which key to be kept in the cookies
+passport.serializeUser((user,done) => {
+    done(null,user.id);
+});
+
+
+//deserialising the user from the key in the cookies
+passport.deserializeUser((id,done) => {
+    User.findById(id,(err,user) => {
+        if(err){
+            console.log('Error in finding user --->Passport');
+            return done(err);
+        }
+
+        return done(null, user);
+    });
+});
+
+module.exports = passport;
