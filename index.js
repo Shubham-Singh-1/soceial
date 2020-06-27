@@ -10,6 +10,7 @@ const passport = require('passport');
 const passportLocals = require('./config/passport-local-statergy');
 const { populate } = require('./models/user');
 const MongoStore = require('connect-mongo')(session);
+const sassMiddleware = require('node-sass-middleware');
 
 app.use(express.urlencoded());
 
