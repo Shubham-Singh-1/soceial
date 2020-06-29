@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const { use } = require('passport');
 
 
 module.exports.profile = ((req,res) => {
@@ -50,7 +51,6 @@ module.exports.create = ((req,res) => {
                     console.log('error in creating user while signing up');
                     return;
                 }
-
                return res.redirect('/users/sign-in');
 
             });
