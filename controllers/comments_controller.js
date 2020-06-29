@@ -15,7 +15,7 @@ module.exports.create = ((req,res) => {
                      return;
                  }
                  
-                 post.comments.push(comment);
+                 post.comments.push(comment); //update
                  post.save();
 
                  res.redirect('/');
