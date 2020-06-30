@@ -14,7 +14,7 @@ module.exports.home = ((req,res) => {
 
     //populate the user of each post
     Post.find({})
-    .populate({path: 'user'})     //see to it later if needed to improve
+    .populate({path: 'user'})    
     .populate({
         path: 'comments',
         populate : {
