@@ -3,9 +3,12 @@ const { use } = require('passport');
 
 
 module.exports.profile = ((req,res) => {
-    return res.render('user_controller' , {
-        title:"User Profile",
-    })
+    User.findById(req.params.id ,(err,user) => {
+        return res.render('user_controller' , {
+            title:"User Profile",
+            profile_user: user,
+        });
+    });
 });
 
 //render the sign up page
