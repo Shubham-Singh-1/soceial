@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const { use } = require('passport');
 
+//let's keep it same as before since no nesting levels and just one call back
 
 module.exports.profile = ((req,res) => {
     User.findById(req.params.id ,(err,user) => {
