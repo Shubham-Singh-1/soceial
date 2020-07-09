@@ -67,7 +67,7 @@
 
                 success: function(data){
                     $(`#post-${data.data.post_id}`).remove();
-                },error: function(errorData){
+                },error: function(error){
                     console.log(error.responseText);
                 }
             });
