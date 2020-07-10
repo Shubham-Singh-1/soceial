@@ -1,5 +1,7 @@
 const User = require('../models/user');
 const { use } = require('passport');
+const fs = require('fs');
+const path = require('path');
 
 //let's keep it same as before since no nesting levels and just one call back
 
@@ -13,13 +15,7 @@ module.exports.profile = ((req,res) => {
 });
 
 module.exports.update = async (req,res) => {
-    // if(req.user.id == req.params.id){
-    //     User.findByIdAndUpdate(req.params.id, req.body ,(err,user) => {
-    //         return res.redirect('back');
-    //     });
-    // }else{
-    //     return res.status(401).send('Unauhtorized');
-    // }
+
     if(req.user.id == req.params.id){
         try{
             let user = await User.findByIdAndUpdate(req.params.id);
@@ -31,6 +27,10 @@ module.exports.update = async (req,res) => {
                 user.email = req.body.email;
 
                 if(req.file){
+                    if(user.avatar){
+                        fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                    }
+
                     //this is saving the path of a uploaded file into the avatar feild in the user
                     user.avatar = User.avatarPath + '/' + req.file.filename;
                 }
