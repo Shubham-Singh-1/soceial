@@ -12,12 +12,39 @@ module.exports.profile = ((req,res) => {
     });
 });
 
-module.exports.update = (req,res) => {
+module.exports.update = async (req,res) => {
+    // if(req.user.id == req.params.id){
+    //     User.findByIdAndUpdate(req.params.id, req.body ,(err,user) => {
+    //         return res.redirect('back');
+    //     });
+    // }else{
+    //     return res.status(401).send('Unauhtorized');
+    // }
     if(req.user.id == req.params.id){
-        User.findByIdAndUpdate(req.params.id, req.body ,(err,user) => {
+        try{
+            let user = await User.findByIdAndUpdate(req.params.id);
+            User.uploadedAvatar(req,res,function(err) {
+                if(err){
+                    console.log('*******Multer error: ',err);
+                }
+                user.name = req.body.name;
+                user.email = req.body.email;
+
+                if(req.file){
+                    //this is saving the path of a uploaded file into the avatar feild in the user
+                    user.avatar = User.avatarPath + '/' + req.file.filename;
+                }
+                user.save();
+                return res.redirect('back');
+            });
+
+        }catch(err){
+            req.flash('error',err);
             return res.redirect('back');
-        });
+        }
+
     }else{
+        req.flash('error','Unauthorized!');
         return res.status(401).send('Unauhtorized');
     }
 }
