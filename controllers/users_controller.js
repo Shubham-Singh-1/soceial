@@ -31,7 +31,7 @@ module.exports.update = async (req,res) => {
                         fs.unlinkSync(path.join(__dirname,'..',user.avatar));
                     }
 
-                    //this is saving the path of a uploaded file into the avatar feild in the user
+                    //this is saving the path of a uploaded file into the avatar field in the user
                     user.avatar = User.avatarPath + '/' + req.file.filename;
                 }
                 user.save();
@@ -53,7 +53,7 @@ module.exports.update = async (req,res) => {
 module.exports.signUp = ((req,res) => {
 
     if(req.isAuthenticated()){
-        return res.redirect('/users/profile');
+        return res.redirect(`/users/profile/${req.user.id}`);
     }
 
     return res.render('user_sign_up', {
@@ -66,7 +66,7 @@ module.exports.signUp = ((req,res) => {
 module.exports.singIn = ((req,res) => {
 
     if(req.isAuthenticated()){
-        return res.redirect('/users/profile');
+        return res.redirect(`/users/profile/${req.user.id}`);
     }
 
     return res.render('user_sign_in' ,{
