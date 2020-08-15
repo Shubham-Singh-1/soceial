@@ -9,6 +9,11 @@ module.exports.toggleLike = async (req,res) => {
         let likeable;
         let deleted=false;
 
+        console.log(req.query)
+        // Please donot auto complate the code it will take more time .What you want o do?
+        //those are cpp codes...not related to the project ok got it 
+        //one minute it giving error here 
+
         if(req.query.type == 'Post'){
 
             likeable = await Post.findById(req.query.id).populate('likes');
@@ -19,7 +24,8 @@ module.exports.toggleLike = async (req,res) => {
             likeable = await Comment.findById(req.query.id).populate('likes');
 
         }
-
+            // Is your user  authenticated?
+            //yes...I think one who can login can like a post right?? Yep but it  let me have a looj
         // check if a like already exists
         let existingLike = await Like.findOne({
             likeable: req.query.id,
@@ -61,3 +67,7 @@ module.exports.toggleLike = async (req,res) => {
         })
     }
 }
+// See youare not sending query in the right way as you can see i orinted req.query and there is no id attribute i have fixeed it 
+// Just let me refreash it 
+// Its working fine now 
+//thanks a lot :)

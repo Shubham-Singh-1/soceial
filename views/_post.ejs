@@ -13,10 +13,10 @@
         <br>
         <small>
             <% if(locals.user) { %>
-                <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?<%= post._id %>&type=Post">
+                <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%= post._id %>&type=Post">
                     <%= post.likes.length %>
                 </a>
-            <% }else{ %>
+            <% } else { %>
                 <%= post.likes.length %> Likes
             <% } %>
         </small>

@@ -5,22 +5,21 @@ const likeSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    //this defines the object id of the like object
+    // this defines the object id of the liked object
     likeable: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        refPath: 'onModel',
+        type: mongoose.Schema.ObjectId,
+        require: true,
+        refPath: 'onModel'
     },
-    //this feild is used for defining the type of the liked object since this is a dynamic reference
+    // this field is used for defining the type of the liked object since this is a dynamic reference
     onModel: {
         type: String,
         required: true,
-        enum: ['Post','Comment'],
+        enum: ['Post', 'Comment']
     }
-},{
-    timestamps: true,
+}, {
+    timestamps: true
 });
 
-const Like = mongoose.model('Like',likeSchema);
-
+const Like = mongoose.model('Like', likeSchema);
 module.exports = Like;
