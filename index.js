@@ -1,7 +1,7 @@
 const express = require('express');
 const env = require('./config/environment');
 const app =express();
-const port = 3000;
+const port = 8000;
 const cookieParser = require('cookie-parser');
 const db = require('./config/mongoose');
 const expressLayouts = require('express-ejs-layouts');
@@ -25,16 +25,17 @@ chatServer.listen(5000);
 console.log('chat server is listening post 5000');
 const path = require('path');
 
-
-app.use(sassMiddleware({
-    src: path.join(__dirname,env.asset_path,'scss'),
-    dest: path.join(__dirname,env.asset_path,'css'),
-    debug:true,
-    outputStyle:'extended',
-    prefix:'/css',
-
-
-}));
+if(env.name == 'development'){
+    app.use(sassMiddleware({
+        src: path.join(__dirname,env.asset_path,'/scss'),
+        dest: path.join(__dirname,env.asset_path,'/css'),
+        debug:true,
+        outputStyle:'extended',
+        prefix:'/css',
+    
+    
+    }));
+}
 
 app.use(express.urlencoded());
 
