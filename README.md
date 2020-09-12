@@ -3,7 +3,7 @@ A complete social media website...with several fun features and with a detailed 
 
 This is the well defined directory structure for the project
 
-----
+<br/>
 .
 └── soceial-master
     ├── assets
@@ -69,7 +69,7 @@ This is the well defined directory structure for the project
     └── workers
         └── comment_email_worker.js
 
-----
+<br/>
 
 Feel free to Fork and run on **http://localhost:8000**
 
