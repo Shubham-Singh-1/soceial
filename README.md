@@ -2,6 +2,7 @@
 A complete social media website...with several fun features and with a detailed directory strcuture...
 
 This is the well defined directory structure for the project
+/*****/
 .
 └── soceial-master
     ├── assets
@@ -66,6 +67,7 @@ This is the well defined directory structure for the project
     │   └── user_sign_up.ejs
     └── workers
         └── comment_email_worker.js
+/******/
         
 Feel free to Fork and run on **http://localhost:8000**
 
